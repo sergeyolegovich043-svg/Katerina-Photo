@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Индивидуальные и коммерческие фотосъемки с комфортной атмосферой, помощью с позированием и вниманием к естественности."
+    />
+    <title>Екатерина Ганичева — коммерческий фотограф</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preload" as="image" href="assets/photo/hero.webp" type="image/webp" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" data-reveal>
+      <a class="brand" href="#top" aria-label="Екатерина Ганичева">
+        <span>Екатерина</span>
+        <span>Ганичева</span>
+      </a>
+      <nav class="header-nav" aria-label="Основная навигация">
+        <a href="#portfolio">Портфолио</a>
+        <a href="#formats">Форматы</a>
+        <a href="#about">Обо мне</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="header-cta magnetic" href="#contact" data-magnetic>Запись</a>
+    </header>
+
+    <main id="top">
+      <section class="hero section-dark" aria-labelledby="hero-title">
+        <div class="grain" aria-hidden="true"></div>
+        <div class="hero-media" data-hero-media>
+          <img
+            src="assets/photo/hero.webp"
+            width="1466"
+            height="2200"
+            fetchpriority="high"
+            decoding="async"
+            alt="Редакционный портрет в Москве"
+          />
+        </div>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="eyebrow" data-reveal>
+            <span data-parallax-text data-depth="0.04">Коммерческий фотограф · Москва</span>
+          </p>
+          <h1 id="hero-title" class="hero-title" aria-label="Фотография, в которой вы узнаёте себя по-новому">
+            <span>Фотография,</span>
+            <span>в которой вы</span>
+            <span>узнаёте себя</span>
+            <span>по-новому</span>
+          </h1>
+          <p class="hero-copy" data-reveal>
+            Екатерина Ганичева — фотограф, который помогает раскрыться в кадре,
+            почувствовать уверенность и сохранить состояние, эмоции и естественность.
+          </p>
+          <div class="hero-actions" data-reveal>
+            <a class="button button-primary magnetic" href="#contact" data-magnetic>Записаться на съемку</a>
+            <a class="button button-ghost magnetic" href="#portfolio" data-magnetic>Смотреть портфолио</a>
+          </div>
+          <div class="hero-trust" data-reveal>
+            <span>С 2020 года</span>
+            <span>Помощь с позированием</span>
+            <span>Подготовка к съемке</span>
+          </div>
+        </div>
+        <div class="hero-caption" data-reveal>
+          <span>Editorial portrait</span>
+          <span>Natural confidence</span>
+        </div>
+      </section>
+
+      <section id="about" class="section about">
+        <div class="section-kicker" data-reveal>
+          <span>01</span>
+          <span>О Екатерине</span>
+        </div>
+        <div class="about-layout">
+          <figure class="about-photo parallax-frame" data-reveal>
+            <img
+              class="parallax-img"
+              src="assets/photo/about.webp"
+              width="1067"
+              height="1600"
+              loading="lazy"
+              decoding="async"
+              alt="Крупный коммерческий портрет в editorial-стиле"
+            />
+            <figcaption>Спокойная съемка с мягким сопровождением</figcaption>
+          </figure>
+          <div class="about-text">
+            <p class="overline" data-reveal>Коммерческий фотограф с 2020 года</p>
+            <h2 data-reveal>Я не просто фотографирую — я создаю пространство, в котором вам спокойно быть собой.</h2>
+            <p data-reveal>
+              Профессионально занимаюсь фотографией с 2020 года. Специализируюсь на индивидуальных съемках,
+              где важно не только получить красивые кадры, но и сохранить атмосферу, эмоции и естественность.
+            </p>
+            <p data-reveal>
+              Для меня фотография — это про человека, состояние и внимание к деталям. Я помогаю с позированием,
+              подготовкой и образами, чтобы вы чувствовали себя уверенно и свободно перед камерой — даже если это ваш первый опыт.
+            </p>
+            <div class="accent-grid" data-reveal>
+              <span>Естественность</span>
+              <span>Внимание к деталям</span>
+              <span>Комфорт перед камерой</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" class="section portfolio section-black">
+        <div class="section-kicker" data-reveal>
+          <span>02</span>
+          <span>Портфолио</span>
+        </div>
+        <div class="section-head portfolio-head">
+          <h2 data-reveal>Кадры, в которых есть воздух, характер и присутствие.</h2>
+          <p data-reveal>
+            Портфолио собрано как визуальный ритм: портреты, контент, индивидуальные и коммерческие съемки,
+            студия и городская среда.
+          </p>
+        </div>
+        <div class="portfolio-filters" aria-label="Фильтры портфолио" data-reveal>
+          <button class="filter-button active" type="button" data-filter="all">Все</button>
+          <button class="filter-button" type="button" data-filter="portrait">Портрет</button>
+          <button class="filter-button" type="button" data-filter="content">Контент</button>
+          <button class="filter-button" type="button" data-filter="individual">Индивидуальная</button>
+          <button class="filter-button" type="button" data-filter="commercial">Коммерческая</button>
+          <button class="filter-button" type="button" data-filter="studio">Студия</button>
+          <button class="filter-button" type="button" data-filter="street">Улица</button>
+        </div>
+        <div class="portfolio-grid" data-gallery>
+          <button class="portfolio-item tall" type="button" data-reveal data-categories="street portrait individual" data-title="Городской editorial" data-src="assets/photo/portfolio-12.webp">
+            <img src="assets/photo/portfolio-12.webp" width="867" height="1300" loading="lazy" decoding="async" alt="Городской editorial-портрет в Москве" />
+            <span>
+              <strong>Городской editorial</strong>
+              <em>street · moscow</em>
+            </span>
+          </button>
+          <button class="portfolio-item" type="button" data-reveal data-categories="street portrait content" data-title="Контент-портрет" data-src="assets/photo/portfolio-01.webp">
+            <img src="assets/photo/portfolio-01.webp" width="867" height="1300" loading="lazy" decoding="async" alt="Контент-портрет на улице" />
+            <span>
+              <strong>Контент-портрет</strong>
+              <em>street · portrait</em>
+            </span>
+          </button>
+          <button class="portfolio-item wide" type="button" data-reveal data-categories="studio commercial portrait" data-title="Студийный fashion" data-src="assets/photo/portfolio-03.webp">
+            <img src="assets/photo/portfolio-03.webp" width="867" height="1300" loading="lazy" decoding="async" alt="Студийный fashion-портрет с розовым шелком" />
+            <span>
+              <strong>Студийный fashion</strong>
+              <em>studio · color</em>
+            </span>
+          </button>
+          <button class="portfolio-item" type="button" data-reveal data-categories="studio commercial portrait" data-title="Черно-белый beauty" data-src="assets/photo/portfolio-04.webp">
+            <img src="assets/photo/portfolio-04.webp" width="800" height="1200" loading="lazy" decoding="async" alt="Черно-белый beauty-портрет" />
+            <span>
+              <strong>Черно-белый beauty</strong>
+              <em>studio · monochrome</em>
+            </span>
+          </button>
+          <button class="portfolio-item tall" type="button" data-reveal data-categories="content commercial studio" data-title="Личный бренд" data-src="assets/photo/portfolio-05.webp">
+            <img src="assets/photo/portfolio-05.webp" width="867" height="1300" loading="lazy" decoding="async" alt="Коммерческая съемка для личного бренда" />
+            <span>
+              <strong>Личный бренд</strong>
+              <em>content · business</em>
+            </span>
+          </button>
+          <button class="portfolio-item" type="button" data-reveal data-categories="studio commercial portrait" data-title="Editorial table story" data-src="assets/photo/portfolio-06.webp">
+            <img src="assets/photo/portfolio-06.webp" width="867" height="1300" loading="lazy" decoding="async" alt="Черно-белая коммерческая editorial-съемка" />
+            <span>
+              <strong>Editorial table story</strong>
+              <em>studio · black & white</em>
+            </span>
+          </button>
+          <button class="portfolio-item wide" type="button" data-reveal data-categories="individual content studio" data-title="Теплый интерьер" data-src="assets/photo/portfolio-07.webp">
+            <img src="assets/photo/portfolio-07.webp" width="867" height="1300" loading="lazy" decoding="async" alt="Теплая индивидуальная съемка в интерьере" />
+            <span>
+              <strong>Теплый интерьер</strong>
+              <em>indoor · calm</em>
+            </span>
+          </button>
+          <button class="portfolio-item" type="button" data-reveal data-categories="individual studio portrait" data-title="Нежный портрет" data-src="assets/photo/portfolio-08.webp">
+            <img src="assets/photo/portfolio-08.webp" width="866" height="1300" loading="lazy" decoding="async" alt="Нежная индивидуальная съемка в белом образе" />
+            <span>
+              <strong>Нежный портрет</strong>
+              <em>individual · soft light</em>
+            </span>
+          </button>
+          <button class="portfolio-item tall" type="button" data-reveal data-categories="individual studio content" data-title="Утренний свет" data-src="assets/photo/portfolio-09.webp">
+            <img src="assets/photo/portfolio-09.webp" width="867" height="1300" loading="lazy" decoding="async" alt="Индивидуальная съемка в светлом интерьере" />
+            <span>
+              <strong>Утренний свет</strong>
+              <em>interior · natural</em>
+            </span>
+          </button>
+          <button class="portfolio-item" type="button" data-reveal data-categories="individual content studio" data-title="Живой интерьерный портрет" data-src="assets/photo/portfolio-10.webp">
+            <img src="assets/photo/portfolio-10.webp" width="867" height="1300" loading="lazy" decoding="async" alt="Живой интерьерный портрет" />
+            <span>
+              <strong>Интерьерный портрет</strong>
+              <em>content · relaxed</em>
+            </span>
+          </button>
+          <button class="portfolio-item" type="button" data-reveal data-categories="commercial portrait studio" data-title="Мягкий fashion close-up" data-src="assets/photo/portfolio-11.webp">
+            <img src="assets/photo/portfolio-11.webp" width="800" height="1200" loading="lazy" decoding="async" alt="Мягкий fashion close-up" />
+            <span>
+              <strong>Fashion close-up</strong>
+              <em>portrait · detail</em>
+            </span>
+          </button>
+          <button class="portfolio-item wide" type="button" data-reveal data-categories="studio portrait commercial" data-title="Черно-белая серия" data-src="assets/photo/portfolio-02.webp">
+            <img src="assets/photo/portfolio-02.webp" width="867" height="1300" loading="lazy" decoding="async" alt="Черно-белый editorial-портрет на улице" />
+            <span>
+              <strong>Черно-белая серия</strong>
+              <em>monochrome · editorial</em>
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <section id="formats" class="section formats">
+        <div class="section-kicker" data-reveal>
+          <span>03</span>
+          <span>Форматы съемок</span>
+        </div>
+        <div class="section-head narrow">
+          <h2 data-reveal>Открытые цены и понятный формат под ваш запрос.</h2>
+          <p data-reveal>Каждая съемка включает мягкое сопровождение, помощь с позированием и внимание к образу.</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card" data-reveal>
+            <p class="price-label">Экспресс-съемка</p>
+            <h3>8 000 ₽</h3>
+            <p class="price-time">40 минут</p>
+            <p>Для контента, портретов или быстрого обновления фотографий.</p>
+            <a class="button button-card magnetic" href="#contact" data-format="Экспресс-съемка" data-magnetic>Выбрать формат</a>
+          </article>
+          <article class="price-card featured" data-reveal>
+            <div class="badge">Популярный выбор</div>
+            <p class="price-label">Индивидуальная съемка стандарт</p>
+            <h3>13 000 ₽</h3>
+            <p class="price-time">1 час</p>
+            <p>Комфортный формат для полноценной фотосессии с несколькими образами.</p>
+            <a class="button button-card magnetic" href="#contact" data-format="Индивидуальная съемка стандарт" data-magnetic>Выбрать стандарт</a>
+          </article>
+          <article class="price-card" data-reveal>
+            <p class="price-label">Индивидуальная съемка Plus</p>
+            <h3>18 000 ₽</h3>
+            <p class="price-time">2 часа</p>
+            <p>Для глубоких и разнообразных съемок, нескольких локаций и спокойного творческого процесса.</p>
+            <a class="button button-card magnetic" href="#contact" data-format="Индивидуальная съемка Plus" data-magnetic>Выбрать Plus</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section process section-black">
+        <div class="section-kicker" data-reveal>
+          <span>04</span>
+          <span>Как проходит съемка</span>
+        </div>
+        <div class="process-layout">
+          <div class="process-intro">
+            <h2 data-reveal>Вам не нужно приходить “готовыми к камере”. Я веду вас через процесс спокойно и внимательно.</h2>
+            <p data-reveal>
+              Мы заранее обсуждаем задачу, настроение, образ и локацию. На съемке я подсказываю,
+              как встать, куда смотреть и как двигаться, чтобы кадр оставался естественным.
+            </p>
+          </div>
+          <ol class="timeline" data-reveal>
+            <li>
+              <span>01</span>
+              <div>
+                <h3>Знакомство и запрос</h3>
+                <p>Разбираем, зачем вам съемка и какое состояние хочется сохранить.</p>
+              </div>
+            </li>
+            <li>
+              <span>02</span>
+              <div>
+                <h3>Подготовка образов и локации</h3>
+                <p>Подбираем визуальный ритм, одежду, детали и пространство.</p>
+              </div>
+            </li>
+            <li>
+              <span>03</span>
+              <div>
+                <h3>Съемка с мягким сопровождением</h3>
+                <p>Я направляю позы и движение, оставляя ощущение свободы в кадре.</p>
+              </div>
+            </li>
+            <li>
+              <span>04</span>
+              <div>
+                <h3>Отбор и обработка фотографий</h3>
+                <p>Кадры проходят аккуратный отбор, цвет и ретушь без потери естественности.</p>
+              </div>
+            </li>
+            <li>
+              <span>05</span>
+              <div>
+                <h3>Готовый результат</h3>
+                <p>Вы получаете фотографии, которые можно использовать для себя, бренда и контента.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section comfort">
+        <div class="comfort-layout">
+          <figure class="comfort-photo parallax-frame" data-reveal>
+            <img
+              class="parallax-img"
+              src="assets/photo/comfort.webp"
+              width="1067"
+              height="1600"
+              loading="lazy"
+              decoding="async"
+              alt="Спокойный интерьерный портрет"
+            />
+          </figure>
+          <div class="comfort-copy">
+            <div class="section-kicker" data-reveal>
+              <span>05</span>
+              <span>Почему со мной комфортно</span>
+            </div>
+            <h2 data-reveal>Вам не нужно знать, как встать, куда смотреть и что делать руками.</h2>
+            <div class="comfort-points">
+              <article data-reveal>
+                <span>01</span>
+                <p>Помогаю с позированием на протяжении всей съемки.</p>
+              </article>
+              <article data-reveal>
+                <span>02</span>
+                <p>Подсказываю по образам и подготовке.</p>
+              </article>
+              <article data-reveal>
+                <span>03</span>
+                <p>Создаю спокойную и поддерживающую атмосферу.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reviews section-black" aria-labelledby="reviews-title">
+        <div class="section-kicker" data-reveal>
+          <span>06</span>
+          <span>Отзывы</span>
+        </div>
+        <div class="reviews-shell" data-reveal>
+          <div class="reviews-head">
+            <h2 id="reviews-title">После съемки остается не только результат, но и новое ощущение себя.</h2>
+            <div class="review-controls" aria-label="Управление отзывами">
+              <button type="button" class="icon-button" data-review-prev aria-label="Предыдущий отзыв">←</button>
+              <button type="button" class="icon-button" data-review-next aria-label="Следующий отзыв">→</button>
+            </div>
+          </div>
+          <div class="review-slider" data-review-slider>
+            <article class="review-slide active">
+              <span>“</span>
+              <p>Я боялась камеры, но уже через 10 минут почувствовала себя спокойно. Екатерина очень бережно подсказывала, и я наконец увидела себя красивой без напряжения.</p>
+              <strong>Анна</strong>
+            </article>
+            <article class="review-slide">
+              <span>“</span>
+              <p>На съемке было ощущение, что меня видят настоящей. Без давления, без искусственных поз, но с очень точным вниманием к деталям.</p>
+              <strong>Мария</strong>
+            </article>
+            <article class="review-slide">
+              <span>“</span>
+              <p>Фотографии получились живыми, эстетичными и очень моими. Я использую их для личного бренда и до сих пор получаю комплименты.</p>
+              <strong>Дарья</strong>
+            </article>
+          </div>
+          <div class="review-dots" data-review-dots aria-label="Выбор отзыва"></div>
+        </div>
+      </section>
+
+      <section id="faq" class="section faq">
+        <div class="section-kicker" data-reveal>
+          <span>07</span>
+          <span>FAQ</span>
+        </div>
+        <div class="faq-layout">
+          <div class="faq-intro">
+            <h2 data-reveal>Вопросы, которые обычно появляются до первой съемки.</h2>
+            <p data-reveal>Если у вас нет опыта перед камерой, это не проблема. Съемка строится так, чтобы вам было спокойно с самого начала.</p>
+          </div>
+          <div class="faq-list" data-reveal>
+            <details open>
+              <summary>Что делать, если я не умею позировать?</summary>
+              <p>Ничего заранее уметь не нужно. Я подсказываю позы, направление взгляда, движения и микродействия на протяжении всей съемки.</p>
+            </details>
+            <details>
+              <summary>Помогаете ли вы с образами?</summary>
+              <p>Да. Мы обсуждаем задачу, настроение и то, как фотографии будут использоваться, а затем подбираем образы и детали.</p>
+            </details>
+            <details>
+              <summary>Можно ли провести съемку впервые?</summary>
+              <p>Конечно. Большая часть клиентов приходит без опыта. Я выстраиваю процесс мягко, чтобы первая съемка стала приятным опытом.</p>
+            </details>
+            <details>
+              <summary>Где проходит съемка?</summary>
+              <p>В студии, на улице, в интерьере или другой локации под задачу. Я помогу выбрать пространство, которое поддержит образ.</p>
+            </details>
+            <details>
+              <summary>Когда будут готовы фотографии?</summary>
+              <p>Срок зависит от формата и объема съемки. Точный дедлайн обсуждаем перед записью, чтобы вы понимали весь процесс заранее.</p>
+            </details>
+            <details>
+              <summary>Как записаться?</summary>
+              <p>Оставьте заявку в форме или напишите в Telegram / WhatsApp. Я уточню задачу и помогу выбрать подходящий формат.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="final-cta section-dark" aria-labelledby="contact-title">
+        <div class="grain" aria-hidden="true"></div>
+        <img
+          class="final-parallax-image"
+          src="assets/photo/cta.webp"
+          width="1267"
+          height="1900"
+          loading="lazy"
+          decoding="async"
+          alt="Теплый интерьерный портрет у окна"
+        />
+        <div class="final-overlay" aria-hidden="true"></div>
+        <div class="final-content">
+          <div class="final-copy">
+            <p class="eyebrow" data-reveal>
+              <span data-parallax-text data-depth="-0.10">Запись на съемку</span>
+            </p>
+            <h2 id="contact-title" data-reveal>
+              <span data-parallax-text data-depth="0.08">Увидеть себя по-новому — начинается с одного сообщения.</span>
+            </h2>
+            <p data-reveal>
+              Расскажите, какую съемку вы хотите, и я помогу подобрать формат, образ и настроение.
+            </p>
+            <div class="contact-links" data-reveal>
+              <a href="https://t.me/your_username" target="_blank" rel="noreferrer">Telegram</a>
+              <a href="https://wa.me/79000000000" target="_blank" rel="noreferrer">WhatsApp</a>
+              <a href="https://instagram.com/your_profile" target="_blank" rel="noreferrer">Instagram</a>
+            </div>
+          </div>
+          <form class="contact-form" data-contact-form data-reveal>
+            <label>
+              <span>Имя</span>
+              <input type="text" name="name" placeholder="Как к вам обращаться" required />
+            </label>
+            <label>
+              <span>Формат</span>
+              <select name="format" aria-label="Формат съемки">
+                <option>Подобрать формат</option>
+                <option>Экспресс-съемка</option>
+                <option>Индивидуальная съемка стандарт</option>
+                <option>Индивидуальная съемка Plus</option>
+                <option>Коммерческая съемка</option>
+              </select>
+            </label>
+            <label>
+              <span>Контакт</span>
+              <input type="text" name="contact" placeholder="Telegram или телефон" required />
+            </label>
+            <label>
+              <span>Запрос</span>
+              <textarea name="message" rows="4" placeholder="Коротко опишите идею съемки"></textarea>
+            </label>
+            <button class="button button-primary magnetic" type="submit" data-magnetic>Отправить заявку</button>
+            <p class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>Екатерина Ганичева</strong>
+        <span>Коммерческий фотограф</span>
+      </div>
+      <nav aria-label="Навигация в футере">
+        <a href="#portfolio">Портфолио</a>
+        <a href="#formats">Форматы</a>
+        <a href="#about">Обо мне</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Запись</a>
+      </nav>
+      <div class="footer-meta">
+        <span>2026</span>
+        <a href="#" aria-label="Политика конфиденциальности">Политика конфиденциальности</a>
+      </div>
+    </footer>
+
+    <a class="mobile-sticky-cta" href="#contact">Записаться на съемку</a>
+
+    <div class="lightbox" data-lightbox aria-hidden="true" role="dialog" aria-modal="true" aria-label="Просмотр фотографии">
+      <button class="lightbox-close" type="button" data-lightbox-close aria-label="Закрыть просмотр">×</button>
+      <button class="lightbox-nav lightbox-prev" type="button" data-lightbox-prev aria-label="Предыдущее фото">←</button>
+      <figure>
+        <img alt="" data-lightbox-image />
+        <figcaption data-lightbox-caption></figcaption>
+      </figure>
+      <button class="lightbox-nav lightbox-next" type="button" data-lightbox-next aria-label="Следующее фото">→</button>
+    </div>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
