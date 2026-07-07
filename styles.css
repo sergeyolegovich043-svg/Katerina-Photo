@@ -12,8 +12,8 @@
   --olive: #8d9276;
   --burgundy: #6d3f3f;
   --shadow: 0 30px 80px rgba(0, 0, 0, 0.42);
-  --serif: "Cormorant Garamond", Georgia, serif;
-  --sans: "Manrope", Arial, sans-serif;
+  --serif: "Unbounded", Arial, sans-serif;
+  --sans: "Jura", Arial, sans-serif;
   --container: min(1180px, calc(100vw - 40px));
   color-scheme: dark;
 }
@@ -24,6 +24,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -102,8 +103,9 @@ img {
   display: grid;
   gap: 0;
   font-family: var(--serif);
-  font-size: 18px;
-  line-height: 0.92;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.08;
   text-transform: uppercase;
 }
 
@@ -112,7 +114,7 @@ img {
   justify-content: center;
   gap: clamp(14px, 2vw, 34px);
   color: var(--muted);
-  font-size: 13px;
+  font-size: 11px;
   text-transform: uppercase;
 }
 
@@ -148,10 +150,10 @@ img {
 }
 
 .header-cta {
-  padding: 10px 18px;
+  padding: 9px 16px;
   border: 1px solid var(--line-strong);
   color: var(--accent-soft);
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0;
   transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
@@ -164,7 +166,7 @@ img {
 
 .section {
   position: relative;
-  padding: clamp(88px, 10vw, 150px) 0;
+  padding: clamp(68px, 8vw, 118px) 0;
 }
 
 .section-black {
@@ -185,7 +187,7 @@ img {
   align-items: center;
   gap: 18px;
   color: var(--accent-soft);
-  font-size: 12px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 
@@ -214,6 +216,11 @@ img {
   display: block;
 }
 
+.formats .section-head.narrow h2 {
+  font-size: clamp(26px, 3.1vw, 42px);
+  line-height: 1.12;
+}
+
 h1,
 h2,
 h3,
@@ -230,13 +237,13 @@ h3 {
 }
 
 h2 {
-  font-size: clamp(44px, 6vw, 92px);
-  line-height: 0.92;
+  font-size: clamp(26px, 3.35vw, 48px);
+  line-height: 1.1;
 }
 
 h3 {
-  font-size: clamp(26px, 3vw, 40px);
-  line-height: 1;
+  font-size: clamp(20px, 2.25vw, 30px);
+  line-height: 1.12;
 }
 
 p {
@@ -247,7 +254,7 @@ p {
 .eyebrow,
 .overline {
   color: var(--accent-soft);
-  font-size: 12px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 
@@ -307,10 +314,11 @@ p {
 }
 
 .hero-title {
-  width: min(880px, 100%);
+  width: min(860px, 100%);
   margin-top: 18px;
-  font-size: clamp(62px, 10vw, 138px);
-  line-height: 0.82;
+  font-size: clamp(36px, 5.6vw, 76px);
+  line-height: 1.02;
+  font-weight: 500;
 }
 
 .hero-title span {
@@ -359,7 +367,7 @@ p {
   color: var(--text);
   background: transparent;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
   transition: color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
@@ -400,7 +408,7 @@ p {
   gap: 12px;
   margin-top: 28px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 
@@ -427,7 +435,7 @@ p {
   justify-items: end;
   gap: 4px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 
@@ -448,7 +456,7 @@ p {
 
 .about-photo {
   position: relative;
-  min-height: 620px;
+  min-height: 540px;
   margin: 0;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -468,38 +476,17 @@ p {
   bottom: 20px;
   max-width: 210px;
   color: rgba(243, 238, 230, 0.72);
-  font-size: 12px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 
 .about-text {
   display: grid;
-  gap: 24px;
+  gap: 20px;
 }
 
 .about-text h2 {
   color: var(--accent-soft);
-}
-
-.accent-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  margin-top: 14px;
-  border: 1px solid var(--line);
-  background: var(--line);
-}
-
-.accent-grid span {
-  min-height: 112px;
-  display: flex;
-  align-items: flex-end;
-  padding: 18px;
-  background: rgba(24, 24, 24, 0.72);
-  color: var(--text);
-  font-family: var(--serif);
-  font-size: 22px;
-  line-height: 1;
 }
 
 .portfolio-head p {
@@ -528,7 +515,7 @@ p {
   background: transparent;
   color: var(--muted);
   cursor: pointer;
-  font-size: 12px;
+  font-size: 10px;
   text-transform: uppercase;
   transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
 }
@@ -603,7 +590,7 @@ p {
 
 .portfolio-item strong {
   font-family: var(--serif);
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 500;
 }
 
@@ -637,19 +624,20 @@ p {
 
 .pricing-grid {
   width: var(--container);
-  margin: 52px auto 0;
+  margin: 36px auto 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
   gap: 16px;
 }
 
 .price-card {
   position: relative;
-  min-height: 430px;
+  min-height: 360px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: clamp(24px, 3vw, 34px);
+  padding: clamp(22px, 2.6vw, 30px);
   border: 1px solid var(--line);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
   transition: transform 0.45s ease, border-color 0.45s ease, background 0.45s ease, box-shadow 0.45s ease;
@@ -669,31 +657,39 @@ p {
 }
 
 .badge {
+  position: absolute;
+  top: clamp(18px, 2.4vw, 24px);
+  right: clamp(18px, 2.4vw, 24px);
   align-self: flex-start;
-  margin-bottom: 28px;
   padding: 8px 12px;
   border: 1px solid rgba(239, 216, 181, 0.32);
   color: var(--accent-soft);
-  font-size: 11px;
+  font-size: 9px;
   text-transform: uppercase;
 }
 
 .price-label {
   color: var(--text);
-  font-size: 13px;
+  max-width: 100%;
+  min-height: 28px;
+  font-size: 11px;
   text-transform: uppercase;
 }
 
+.price-card.featured .price-label {
+  max-width: calc(100% - 118px);
+}
+
 .price-card h3 {
-  margin-top: 22px;
-  font-size: clamp(48px, 5vw, 68px);
+  margin-top: 18px;
+  font-size: clamp(30px, 3.35vw, 44px);
   color: var(--accent-soft);
 }
 
 .price-time {
   margin-top: 10px;
   color: var(--accent);
-  font-size: 13px;
+  font-size: 11px;
   text-transform: uppercase;
 }
 
@@ -742,13 +738,13 @@ p {
 .timeline li > span {
   color: var(--accent);
   font-family: var(--serif);
-  font-size: 36px;
+  font-size: 28px;
   line-height: 1;
 }
 
 .timeline h3 {
   margin-bottom: 12px;
-  font-size: clamp(30px, 4vw, 48px);
+  font-size: clamp(24px, 3vw, 36px);
 }
 
 .comfort {
@@ -767,7 +763,7 @@ p {
 }
 
 .comfort-photo {
-  min-height: 720px;
+  min-height: 600px;
   margin: 0;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -786,7 +782,7 @@ p {
 .comfort-points {
   display: grid;
   gap: 1px;
-  margin-top: 42px;
+  margin-top: 32px;
   border: 1px solid var(--line);
   background: var(--line);
 }
@@ -803,7 +799,7 @@ p {
 .comfort-points span {
   color: var(--accent);
   font-family: var(--serif);
-  font-size: 34px;
+  font-size: 28px;
 }
 
 .comfort-points p {
@@ -831,7 +827,7 @@ p {
 
 .reviews-head h2 {
   max-width: 860px;
-  font-size: clamp(40px, 5vw, 78px);
+  font-size: clamp(26px, 3.5vw, 44px);
 }
 
 .review-controls {
@@ -889,7 +885,7 @@ p {
 .review-slide span {
   color: var(--accent);
   font-family: var(--serif);
-  font-size: 92px;
+  font-size: 70px;
   line-height: 0.4;
 }
 
@@ -897,8 +893,8 @@ p {
   max-width: 860px;
   color: var(--text);
   font-family: var(--serif);
-  font-size: clamp(30px, 4vw, 54px);
-  line-height: 1.08;
+  font-size: clamp(24px, 3vw, 38px);
+  line-height: 1.2;
 }
 
 .review-slide strong {
@@ -956,14 +952,14 @@ details {
 
 summary {
   position: relative;
-  min-height: 86px;
+  min-height: 72px;
   display: flex;
   align-items: center;
   padding: 24px 48px 24px 0;
   color: var(--text);
   cursor: pointer;
   font-family: var(--serif);
-  font-size: clamp(25px, 3vw, 36px);
+  font-size: clamp(22px, 2.6vw, 30px);
   list-style: none;
 }
 
@@ -992,7 +988,7 @@ details p {
 
 .final-cta {
   min-height: auto;
-  padding: clamp(86px, 10vw, 150px) 0;
+  padding: clamp(70px, 8vw, 120px) 0;
 }
 
 .final-cta > img,
@@ -1053,7 +1049,7 @@ details p {
   padding: 11px 15px;
   border: 1px solid rgba(246, 238, 223, 0.18);
   color: var(--accent-soft);
-  font-size: 12px;
+  font-size: 10px;
   text-transform: uppercase;
   transition: border-color 0.3s ease, background 0.3s ease;
 }
@@ -1079,7 +1075,7 @@ details p {
 
 .contact-form span {
   color: var(--accent-soft);
-  font-size: 11px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 
@@ -1168,7 +1164,7 @@ details p {
   border: 1px solid var(--line-strong);
   background: rgba(214, 167, 109, 0.92);
   color: #101010;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   box-shadow: 0 18px 54px rgba(0, 0, 0, 0.45);
@@ -1305,7 +1301,6 @@ details p {
     min-height: 540px;
   }
 
-  .accent-grid,
   .pricing-grid {
     grid-template-columns: 1fr;
   }
@@ -1396,8 +1391,8 @@ details p {
   }
 
   .hero-title {
-    font-size: clamp(46px, 12vw, 66px);
-    line-height: 0.88;
+    font-size: clamp(32px, 9vw, 46px);
+    line-height: 1.08;
   }
 
   .hero-copy {
@@ -1427,7 +1422,7 @@ details p {
   }
 
   h2 {
-    font-size: clamp(42px, 13vw, 58px);
+    font-size: clamp(32px, 10vw, 46px);
   }
 
   .section-kicker {
@@ -1437,10 +1432,6 @@ details p {
   .about-photo,
   .comfort-photo {
     min-height: 430px;
-  }
-
-  .accent-grid span {
-    min-height: 82px;
   }
 
   .timeline li {
@@ -1457,7 +1448,7 @@ details p {
   }
 
   .review-slide p {
-    font-size: 32px;
+    font-size: 24px;
   }
 
   summary {
@@ -1475,7 +1466,7 @@ details p {
 
   .contact-links {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .contact-links a {
