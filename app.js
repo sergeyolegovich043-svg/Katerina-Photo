@@ -1,18 +1,29 @@
 const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.14, rootMargin: "0px 0px -8% 0px" }
-);
+const revealItems = [...document.querySelectorAll("[data-reveal]")];
+const showRevealItem = (element) => element.classList.add("is-visible");
 
-document.querySelectorAll("[data-reveal]").forEach((element) => revealObserver.observe(element));
+if ("IntersectionObserver" in window && !prefersReduced) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          showRevealItem(entry.target);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: "0px 0px -4% 0px" }
+  );
+
+  revealItems.forEach((element) => revealObserver.observe(element));
+
+  window.setTimeout(() => {
+    revealItems.forEach(showRevealItem);
+  }, 1400);
+} else {
+  revealItems.forEach(showRevealItem);
+}
 
 const header = document.querySelector(".site-header");
 window.addEventListener(
@@ -98,7 +109,7 @@ filterButtons.forEach((button) => {
     const filter = button.dataset.filter;
     filterButtons.forEach((item) => item.classList.toggle("active", item === button));
     portfolioItems.forEach((item) => {
-      const match = filter === "all" || item.dataset.categories.includes(filter);
+      const match = filter === "all" || item.dataset.categories?.includes(filter);
       item.classList.toggle("is-hidden", !match);
     });
   });
@@ -112,18 +123,21 @@ const galleryItems = [...portfolioItems];
 let activeGalleryIndex = 0;
 
 const openLightbox = (index) => {
+  if (!lightbox || !lightboxImage || !lightboxCaption) return;
   activeGalleryIndex = index;
   const item = galleryItems[activeGalleryIndex];
+  if (!item) return;
   lightboxImage.src = item.dataset.src;
   lightboxImage.alt = item.querySelector("img").alt;
   lightboxCaption.textContent = item.dataset.title;
   lightbox.classList.add("open");
   lightbox.setAttribute("aria-hidden", "false");
   document.body.classList.add("lightbox-open");
-  lightboxClose.focus();
+  lightboxClose?.focus();
 };
 
 const closeLightbox = () => {
+  if (!lightbox || !lightboxImage) return;
   lightbox.classList.remove("open");
   lightbox.setAttribute("aria-hidden", "true");
   document.body.classList.remove("lightbox-open");
@@ -132,8 +146,10 @@ const closeLightbox = () => {
 
 const stepLightbox = (direction) => {
   const visibleItems = galleryItems.filter((item) => !item.classList.contains("is-hidden"));
+  if (!visibleItems.length) return;
   const currentVisibleIndex = visibleItems.indexOf(galleryItems[activeGalleryIndex]);
-  const nextVisibleIndex = (currentVisibleIndex + direction + visibleItems.length) % visibleItems.length;
+  const safeCurrentIndex = currentVisibleIndex === -1 ? 0 : currentVisibleIndex;
+  const nextVisibleIndex = (safeCurrentIndex + direction + visibleItems.length) % visibleItems.length;
   activeGalleryIndex = galleryItems.indexOf(visibleItems[nextVisibleIndex]);
   openLightbox(activeGalleryIndex);
 };
@@ -162,13 +178,14 @@ let reviewIndex = 0;
 let reviewTimer;
 
 const showReview = (index) => {
+  if (!slides.length) return;
   reviewIndex = (index + slides.length) % slides.length;
   slides.forEach((slide, slideIndex) => slide.classList.toggle("active", slideIndex === reviewIndex));
   dotsWrap?.querySelectorAll("button").forEach((dot, dotIndex) => dot.classList.toggle("active", dotIndex === reviewIndex));
 };
 
 const startReviews = () => {
-  if (prefersReduced) return;
+  if (prefersReduced || !slides.length) return;
   clearInterval(reviewTimer);
   reviewTimer = setInterval(() => showReview(reviewIndex + 1), 5200);
 };
@@ -208,6 +225,6 @@ document.querySelector("[data-contact-form]")?.addEventListener("submit", (event
   event.preventDefault();
   const form = event.currentTarget;
   const status = form.querySelector(".form-status");
-  status.textContent = "Спасибо. Заявка подготовлена, Екатерина свяжется с вами для уточнения деталей.";
+  if (status) status.textContent = "Спасибо. Заявка подготовлена, Екатерина свяжется с вами для уточнения деталей.";
   form.reset();
 });
