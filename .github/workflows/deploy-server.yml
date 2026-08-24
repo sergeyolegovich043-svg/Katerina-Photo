@@ -1,0 +1,66 @@
+name: Deploy to server
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, Linux, X64]
+    timeout-minutes: 15
+    steps:
+      - name: Check out project
+        uses: actions/checkout@v4
+
+      - name: Bootstrap web server when needed
+        shell: bash
+        env:
+          SERVER_ROOT_PASSWORD: ${{ secrets.SERVER_ROOT_PASSWORD }}
+        run: |
+          set -Eeuo pipefail
+
+          if command -v nginx >/dev/null && [ -w /var/www/katerina-photo ]; then
+            echo "Web server is already configured."
+            exit 0
+          fi
+
+          if sudo -n true 2>/dev/null; then
+            sudo bash .github/deploy/bootstrap-server.sh "$GITHUB_WORKSPACE"
+            exit 0
+          fi
+
+          if [ -z "${SERVER_ROOT_PASSWORD:-}" ]; then
+            echo "Initial setup requires SERVER_ROOT_PASSWORD." >&2
+            exit 1
+          fi
+
+          printf '%s\n' "$SERVER_ROOT_PASSWORD" | script -q -e -c \
+            "su - root -c 'bash \"$GITHUB_WORKSPACE/.github/deploy/bootstrap-server.sh\" \"$GITHUB_WORKSPACE\"'" \
+            /dev/null
+
+      - name: Publish project files
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          rsync -a --delete \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='README.md' \
+            ./ /var/www/katerina-photo/
+
+      - name: Verify deployment
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          test -s /var/www/katerina-photo/index.html
+          curl --fail --silent --show-error --retry 5 --retry-delay 1 \
+            http://127.0.0.1/ >/dev/null
+          echo "Deployment completed: http://80.90.178.107/"
