@@ -16,51 +16,84 @@ jobs:
   deploy:
     runs-on: [self-hosted, Linux, X64]
     timeout-minutes: 15
+    env:
+      DEPLOY_ROOT: /home/github-runner/katerina-photo
+      CADDY_VERSION: 2.11.4
     steps:
       - name: Check out project
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
-      - name: Bootstrap web server when needed
+      - name: Install rootless Caddy
         shell: bash
-        env:
-          SERVER_ROOT_PASSWORD: ${{ secrets.SERVER_ROOT_PASSWORD }}
         run: |
           set -Eeuo pipefail
-
-          if command -v nginx >/dev/null && [ -w /var/www/katerina-photo ]; then
-            echo "Web server is already configured."
+          caddy_bin="$HOME/.local/bin/caddy"
+          if [ -x "$caddy_bin" ] && "$caddy_bin" version | grep -q "v${CADDY_VERSION}"; then
+            echo "Caddy v${CADDY_VERSION} is already installed."
             exit 0
           fi
 
-          if sudo -n true 2>/dev/null; then
-            sudo bash .github/deploy/bootstrap-server.sh "$GITHUB_WORKSPACE"
-            exit 0
-          fi
-
-          if [ -z "${SERVER_ROOT_PASSWORD:-}" ]; then
-            echo "Initial setup requires SERVER_ROOT_PASSWORD." >&2
-            exit 1
-          fi
-
-          printf '%s\n' "$SERVER_ROOT_PASSWORD" | script -q -e -c \
-            "su - root -c 'bash \"$GITHUB_WORKSPACE/.github/deploy/bootstrap-server.sh\" \"$GITHUB_WORKSPACE\"'" \
-            /dev/null
+          archive="caddy_${CADDY_VERSION}_linux_amd64.tar.gz"
+          checksums="caddy_${CADDY_VERSION}_checksums.txt"
+          release_url="https://github.com/caddyserver/caddy/releases/download/v${CADDY_VERSION}"
+          download_dir="$(mktemp -d)"
+          trap 'rm -rf "$download_dir"' EXIT
+          cd "$download_dir"
+          curl --fail --silent --show-error --location --remote-name "$release_url/$archive"
+          curl --fail --silent --show-error --location --remote-name "$release_url/$checksums"
+          grep "  ${archive}$" "$checksums" | sha512sum --check --strict
+          mkdir -p "$HOME/.local/bin"
+          tar -xzf "$archive" caddy
+          install -m 0755 caddy "$caddy_bin"
 
       - name: Publish project files
         shell: bash
         run: |
           set -Eeuo pipefail
-          rsync -a --delete \
-            --exclude='.git/' \
-            --exclude='.github/' \
-            --exclude='README.md' \
-            ./ /var/www/katerina-photo/
+          mkdir -p "$DEPLOY_ROOT/site"
+          tar \
+            --exclude='./.git' \
+            --exclude='./.github' \
+            --exclude='./README.md' \
+            -cf - . | tar -xf - -C "$DEPLOY_ROOT/site"
+
+      - name: Start web server
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          caddy_bin="$HOME/.local/bin/caddy"
+          caddyfile="$DEPLOY_ROOT/Caddyfile"
+          logfile="$DEPLOY_ROOT/caddy.log"
+
+          printf '%s\n' \
+            ':8080 {' \
+            "    root * $DEPLOY_ROOT/site" \
+            '    encode zstd gzip' \
+            '    try_files {path} /index.html' \
+            '    file_server' \
+            '}' >"$caddyfile"
+
+          "$caddy_bin" validate --config "$caddyfile" --adapter caddyfile
+
+          if "$caddy_bin" reload --config "$caddyfile" --adapter caddyfile 2>/dev/null; then
+            echo "Caddy configuration reloaded."
+          else
+            RUNNER_TRACKING_ID='' nohup setsid "$caddy_bin" run \
+              --config "$caddyfile" --adapter caddyfile \
+              >"$logfile" 2>&1 </dev/null &
+            echo $! >"$DEPLOY_ROOT/caddy.pid"
+          fi
+
+          if command -v crontab >/dev/null; then
+            cron_command="@reboot $caddy_bin start --config $caddyfile --adapter caddyfile >>$logfile 2>&1"
+            { crontab -l 2>/dev/null | grep -vF "$caddy_bin start" || true; echo "$cron_command"; } | crontab -
+          fi
 
       - name: Verify deployment
         shell: bash
         run: |
           set -Eeuo pipefail
-          test -s /var/www/katerina-photo/index.html
+          test -s "$DEPLOY_ROOT/site/index.html"
           curl --fail --silent --show-error --retry 5 --retry-delay 1 \
-            http://127.0.0.1/ >/dev/null
-          echo "Deployment completed: http://80.90.178.107/"
+            http://127.0.0.1:8080/ >/dev/null
+          echo "Deployment completed: http://80.90.178.107:8080/"
