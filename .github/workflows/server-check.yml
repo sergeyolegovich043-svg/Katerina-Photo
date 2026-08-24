@@ -1,0 +1,27 @@
+name: Server check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: [self-hosted, Linux, X64]
+    timeout-minutes: 5
+    steps:
+      - name: Check deployment prerequisites
+        shell: bash
+        run: |
+          set -u
+          echo "HOST=$(hostname)"
+          echo "USER=$(id -un)"
+          id
+          echo "OS:"
+          sed -n '1,8p' /etc/os-release
+          if sudo -n true 2>/dev/null; then
+            echo "PASSWORDLESS_SUDO=yes"
+          else
+            echo "PASSWORDLESS_SUDO=no"
+          fi
+          echo "NGINX=$(command -v nginx || true)"
+          echo "NGINX_STATE=$(systemctl is-active nginx 2>/dev/null || true)"
+          ls -ld /var/www /var/www/html 2>/dev/null || true
