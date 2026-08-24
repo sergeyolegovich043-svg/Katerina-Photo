@@ -82,6 +82,12 @@ jobs:
               --config "$caddyfile" --adapter caddyfile \
               >"$logfile" 2>&1 </dev/null &
             echo $! >"$DEPLOY_ROOT/caddy.pid"
+            sleep 2
+            if ! kill -0 "$(cat "$DEPLOY_ROOT/caddy.pid")" 2>/dev/null; then
+              echo "Caddy stopped during startup:" >&2
+              cat "$logfile" >&2
+              exit 1
+            fi
           fi
 
           if command -v crontab >/dev/null; then
